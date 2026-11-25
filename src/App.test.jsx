@@ -9,9 +9,11 @@ test("prevents adding a book when required fields are empty", () => {
     screen.getByRole("button", { name: "Add Book" })
   );
 
-  expect(screen.getByRole("alert")).toHaveTextContent(
-    "Please complete all fields with valid information."
-  );
+  expect(screen.getByLabelText("Book title"))
+  .toHaveAccessibleDescription("Please enter a book title.");
+
+expect(screen.getByLabelText("Author"))
+  .toHaveAccessibleDescription("Please enter an author.");
 
   expect(screen.getByText("Total books: 8")).toBeInTheDocument();
 });
